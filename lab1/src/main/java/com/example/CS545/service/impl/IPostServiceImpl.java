@@ -18,7 +18,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class IPostServiceImpl implements IPostService {
 
-    private final IPostRepo postRepo;
+    @Autowired
+    private IPostRepo postRepo;
 
     @Autowired
     ModelMapper modelMapper;
@@ -30,14 +31,14 @@ public class IPostServiceImpl implements IPostService {
         return (List<PostDto>) listMapper.mapList(postRepo.findAll(),new PostDto());}
 
 
-    public PostDto getById(int id ) {
-        return modelMapper.map(postRepo.getById(id),  PostDto.class);
+    public PostDto getById(Long id ) {
+        return modelMapper.map(postRepo.findById(id),  PostDto.class);
 
     }
 
 
-    public PostDtoV2 getByIdV2(int id ) {
-        return modelMapper.map(postRepo.getById(id),  PostDtoV2.class);
+    public PostDtoV2 getByIdV2(Long id ) {
+        return modelMapper.map(postRepo.findById(id),  PostDtoV2.class);
 
     }
 
@@ -47,13 +48,13 @@ public class IPostServiceImpl implements IPostService {
     }
 
     @Override
-    public void delete(int id) {
-        postRepo.delete(id);
+    public void delete(Long id) {
+        postRepo.deleteById(id);
     }
 
     @Override
-    public void update(int id,  PostDto p) {
-        postRepo.update(id, modelMapper.map(p, Post.class));
+    public void update(Long id,  PostDto p) {
+        postRepo.save( modelMapper.map(p, Post.class));
     }
 
     @Override

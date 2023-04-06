@@ -10,15 +10,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository
-public class PostRepoImpl implements IPostRepo {
+public class PostRepoImpl //implements IPostRepo
+         {
     private static List<Post> posts;
-    private static int postId = 300;
+    private static Long postId = 300L;
     static {
         posts = new ArrayList<>();
 
 
-        Post p1 = new Post(111,"post1","post content 1","hossam");
-        Post p2 = new Post(222,"post2","post content 2","ahmed");
+        Post p1 = new Post(111L,"post1","post content 1","hossam");
+        Post p2 = new Post(222L,"post2","post content 2","ahmed");
         posts.add(p1);
         posts.add(p2);
     }
@@ -28,14 +29,10 @@ public class PostRepoImpl implements IPostRepo {
         return posts;
     }
 
-    public void save(Post p) {
-            p.setId(postId); // We are auto generating the id for DEMO purposes, (Normally, do not change your parameters)
-        postId++;
-            posts.add(p);
-        }
 
 
-        @Override
+
+
     public void delete(int id) {
         var post =posts
                 .stream()
@@ -44,7 +41,7 @@ public class PostRepoImpl implements IPostRepo {
             posts.remove(post);
     }
 
-    @Override
+
     public void update(int id, Post p) {
         Post toUpdate = getById(id);
         toUpdate.setTitle(p.getTitle());
@@ -61,12 +58,12 @@ public class PostRepoImpl implements IPostRepo {
 
     }
 
-    @Override
-    public List<Post>findAllPostsByAuthor(String author){
-        return posts.stream()
-                .filter(p -> p.getAuthor()==author)
-                .collect(Collectors.toList());
-    }
+//    @Override
+//    public List<Post>findAllPostsByAuthor(String author){
+//        return posts.stream()
+//                .filter(p -> p.getAuthor()==author)
+//                .collect(Collectors.toList());
+//    }
 
 
 

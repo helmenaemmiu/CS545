@@ -9,15 +9,15 @@ public interface IPostService {
 
     public List<PostDto> findAll();
 
-    PostDto getById(int id );
-    PostDtoV2 getByIdV2(int id );
+    PostDto getById(Long id );
+    PostDtoV2 getByIdV2(Long id );
 
 
 
     void save(PostDto p);
 
-    void delete(int id);
+    void delete(Long id);
 
-    void update(int id, PostDto p);
+    void update(Long id, PostDto p);
     List<PostDto>findAllPostsByAuthor(String author);
 }

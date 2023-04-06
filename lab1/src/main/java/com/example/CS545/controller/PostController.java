@@ -37,12 +37,12 @@ public class PostController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PostDto> getById(@PathVariable int id) {
+    public ResponseEntity<PostDto> getById(@PathVariable Long id) {
         var post = postService.getById(id);
         return ResponseEntity.ok(post);
     }
     @GetMapping(value = "/{id}", headers = "X-API-VERSION=2")
-    public ResponseEntity<PostDtoV2> getByIdv2(@PathVariable int id) {
+    public ResponseEntity<PostDtoV2> getByIdv2(@PathVariable Long id) {
         var post = postService.getByIdV2(id);
         return ResponseEntity.ok(post);
     }
@@ -53,13 +53,13 @@ public class PostController {
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable("id") int postId, @RequestBody PostDto p) {
+    public void update(@PathVariable("id") Long postId, @RequestBody PostDto p) {
         postService.update(postId,p);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable int id) {
+    public void delete(@PathVariable Long id) {
         postService.delete(id);
     }
 
