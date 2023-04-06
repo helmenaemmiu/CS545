@@ -15,9 +15,16 @@ public interface IUserRepo extends CrudRepository<User, Long> {
     @Query("SELECT u FROM User u WHERE SIZE(u.posts) > 1")
     List<User> findAllUsersHaveAtLeastTwoPost();
 
+    @Query("SELECT u FROM User u WHERE SIZE(u.posts) > ?1")
+    List<User> findAllUsersHaveAtLeastNPosts(Integer number);
+
 
     @Query("SELECT u.posts FROM User u WHERE u.id = ?1")
     List<Post> findAllUserPosts(Long userId);
+
+
+    @Query("SELECT distinct p.user FROM Post p WHERE p.title = ?1")
+    List<User> findUsersHavePostWithGivenTitle(String title);
 
 
 

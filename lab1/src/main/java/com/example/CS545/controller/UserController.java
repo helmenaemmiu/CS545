@@ -51,6 +51,20 @@ public class UserController {
         return userService.findAllUsersHaveAtLeastTwoPost();
     }
 
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/usersmorethannpost/{number}")
+    public Iterable<User> findAllUsersHaveAtLeastNPosts(@PathVariable Integer number) {
+        return userService.findAllUsersHaveAtLeastNPosts(number);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/usersByTitle/{title}")
+    public Iterable<User> findUsersHavePostWithGivenTitle(@PathVariable String title) {
+        return userService.findUsersHavePostWithGivenTitle(title);
+    }
+
+
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public void save(@RequestBody User p) {

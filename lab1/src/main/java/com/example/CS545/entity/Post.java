@@ -1,11 +1,13 @@
 package com.example.CS545.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @Data
@@ -19,8 +21,14 @@ public class Post {
     String title;
     String content;
     String author;
-//
-//    @ManyToOne
-//    User user;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "fk_post")
+    List<Comment> comments;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "fk_user")
+    User user;
 
 }

@@ -1,5 +1,6 @@
 package com.example.CS545.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,14 +13,16 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class User {
+public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "fk_user")
-    List<Post> posts;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "fk_post")
+    Post post;
 
 
 }

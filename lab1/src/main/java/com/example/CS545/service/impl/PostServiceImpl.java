@@ -32,8 +32,7 @@ public class PostServiceImpl implements IPostService {
 
 
     public PostDto getById(Long id ) {
-        return modelMapper.map(postRepo.findById(id),  PostDto.class);
-
+        return modelMapper.map(postRepo.findById(id).get(),  PostDto.class);
     }
 
 
@@ -60,6 +59,9 @@ public class PostServiceImpl implements IPostService {
     @Override
     public List<PostDto>findAllPostsByAuthor(String author){
         return (List<PostDto>) listMapper.mapList(postRepo.findAllPostsByAuthor(author),new PostDto());}
+    @Override
+    public List<PostDto>findAllPostsByTitle(String title){
+        return (List<PostDto>) listMapper.mapList(postRepo.findAllByTitle(title),new PostDto());}
 
 
 }

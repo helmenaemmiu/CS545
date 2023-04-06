@@ -23,4 +23,8 @@ public interface IUserService {
     Iterable<User> findAllUsersHaveAtLeastTwoPost();
     Iterable<Post>findAllUserPosts(Long userId);
 
+    Iterable<User> findAllUsersHaveAtLeastNPosts(Integer Number);
+
+    Iterable<User> findUsersHavePostWithGivenTitle(String title);
+
 }

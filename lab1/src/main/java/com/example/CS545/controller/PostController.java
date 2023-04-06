@@ -35,6 +35,12 @@ public class PostController {
     public List<PostDto> getAllByAuthor(@PathVariable String author) {
         return postService.findAllPostsByAuthor(author);
     }
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/Bytitle/{title}")
+    public List<PostDto> getAllByTitle(@PathVariable String title) {
+        return postService.findAllPostsByTitle(title);
+    }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<PostDto> getById(@PathVariable Long id) {

@@ -66,4 +66,13 @@ public class UserServiceImpl implements IUserService {
         return userRepo.findAllUserPosts(userId);
     }
 
+    @Override
+    public Iterable<User>findAllUsersHaveAtLeastNPosts(Integer number){
+        return userRepo.findAllUsersHaveAtLeastNPosts(number);
+    }
+
+    @Override
+    public Iterable<User>findUsersHavePostWithGivenTitle(String title){
+        return userRepo.findUsersHavePostWithGivenTitle(title);
+    }
 }

@@ -20,4 +20,6 @@ public interface IPostService {
 
     void update(Long id, PostDto p);
     List<PostDto>findAllPostsByAuthor(String author);
+
+    List<PostDto>findAllPostsByTitle(String title);
 }

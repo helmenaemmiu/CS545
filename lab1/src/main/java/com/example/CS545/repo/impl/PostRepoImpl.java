@@ -18,8 +18,8 @@ public class PostRepoImpl //implements IPostRepo
         posts = new ArrayList<>();
 
 
-        Post p1 = new Post(111L,"post1","post content 1","hossam");
-        Post p2 = new Post(222L,"post2","post content 2","ahmed");
+        Post p1 = new Post(111L,"post1","post content 1","hossam",null,null);
+        Post p2 = new Post(222L,"post2","post content 2","ahmed",null,null);
         posts.add(p1);
         posts.add(p2);
     }
